@@ -9,8 +9,12 @@
   "keywords": [
     "babel-plugin"
   ],
+  "scripts": {
+    "prettier": "prettier --write *.js"
+  },
   "devDependencies": {
     "babel-plugin-transform-rename-properties": "^0.1.0",
-    "change-case": "^4.1.1"
+    "change-case": "^4.1.1",
+    "prettier": "^2.1.2"
   }
 }
