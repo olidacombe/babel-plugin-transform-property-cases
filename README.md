@@ -92,7 +92,7 @@ This plugin is licensed under the MIT license. See [LICENSE](./LICENSE).
 
 ## Thanks
 
-This plugin relies heavily on
+This plugin relies heavily on:
 
 - [babel-plugin-transform-rename-properties](https://github.com/jviide/babel-plugin-transform-rename-properties)
 - [change-case](https://github.com/blakeembrey/change-case)
