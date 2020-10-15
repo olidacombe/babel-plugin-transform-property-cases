@@ -18,6 +18,22 @@ describe("getOptions", () => {
       "Territorial Kittens": "territorial-kittens",
     });
   });
+
+  it("converts various cases simultaneously", () => {
+    const options = getOptions({
+      "kebab-case": ["blaBla", "yaDa"],
+      camelCase: ["TotalSoup"],
+      PascalCase: ["munster _vs_ cheese"],
+      snake_case: ["basel-Craft"],
+    });
+    expect(options).to.eql({
+      blaBla: "bla-bla",
+      yaDa: "ya-da",
+      TotalSoup: "totalSoup",
+      "munster _vs_ cheese": "MunsterVsCheese",
+      "basel-Craft": "basel_craft",
+    });
+  });
 });
 
 function replace(input, options = {}) {
@@ -51,6 +67,14 @@ describe("plugin", () => {
       function mutateStuff(stuff) {
         stuff.blaBla += 2;
       }
+
+      const meal = {
+        TotalSoup: {
+          'munster _vs_ cheese': {
+            'basel-Craft': 'yaDa'
+          }
+        }
+      };
       `,
       `
       const yaDa = 3;
@@ -63,8 +87,21 @@ describe("plugin", () => {
       function mutateStuff(stuff) {
         stuff['bla-bla'] += 2;
       }
+
+      const meal = {
+        totalSoup: {
+          'MunsterVsCheese': {
+            'basel_craft': 'yaDa'
+          }
+        }
+      };
       `,
-      { "kebab-case": ["blaBla", "yaDa"] }
+      {
+        "kebab-case": ["blaBla", "yaDa"],
+        camelCase: ["TotalSoup"],
+        PascalCase: ["munster _vs_ cheese"],
+        snake_case: ["basel-Craft"],
+      }
     );
   });
 });

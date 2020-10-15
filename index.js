@@ -1,4 +1,4 @@
-const { paramCase } = require("change-case");
+const { camelCase, paramCase, pascalCase, snakeCase } = require("change-case");
 const transformRename = require("babel-plugin-transform-rename-properties");
 
 function renameOptionsFromCasesOptions(options = {}) {
@@ -6,6 +6,9 @@ function renameOptionsFromCasesOptions(options = {}) {
   const caseTransforms = [
     ["kebab-case", paramCase],
     ["param-case", paramCase],
+    ["camelCase", camelCase],
+    ["snake_case", snakeCase],
+    ["PascalCase", pascalCase],
   ];
   for (const [key, f] of caseTransforms) {
     const targets = options[key] || [];
