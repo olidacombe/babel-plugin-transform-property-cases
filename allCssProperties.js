@@ -1,0 +1,46 @@
+// All css properties, pulled from
+// https://www.w3.org/Style/CSS/all-descriptors.en.json
+// filtered by status being one of CR, PR, REC, NOTE
+// i.e.
+// curl https://www.w3.org/Style/CSS/all-descriptors.en.json | jq '[.[] | select(.status=="CR" or .status=="PR" or .status=="REC" or .status=="NOTE") | {descriptor} | flatten ] | flatten'
+
+module.exports = [
+  "additive-symbols",
+  "any-hover",
+  "any-pointer",
+  "aspect-ratio",
+  "color",
+  "color-gamut",
+  "color-index",
+  "device-aspect-ratio",
+  "device-height",
+  "device-width",
+  "fallback",
+  "font-family",
+  "font-feature-settings",
+  "font-stretch",
+  "font-style",
+  "font-weight",
+  "grid",
+  "height",
+  "hover",
+  "monochrome",
+  "negative",
+  "orientation",
+  "overflow-block",
+  "overflow-inline",
+  "pad",
+  "pointer",
+  "prefix",
+  "range",
+  "resolution",
+  "scan",
+  "speak-as",
+  "src",
+  "suffix",
+  "symbols",
+  "system",
+  "unicode-range",
+  "update",
+  "width",
+];
