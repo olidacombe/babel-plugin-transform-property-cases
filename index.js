@@ -4,8 +4,8 @@ const transformRename = require("babel-plugin-transform-rename-properties");
 function renameOptionsFromCasesOptions(options = {}) {
   const renameOptions = {};
   const caseTransforms = [
-    ["kebabCase", paramCase],
-    ["paramCase", paramCase],
+    ["kebab-case", paramCase],
+    ["param-case", paramCase],
   ];
   for (const [key, f] of caseTransforms) {
     const targets = options[key] || [];
@@ -21,3 +21,5 @@ module.exports = function ({ types: t }, options = {}) {
   const rename = renameOptionsFromCasesOptions(options);
   return transformRename({ types: t }, { rename });
 };
+
+module.exports.getOptions = renameOptionsFromCasesOptions;
