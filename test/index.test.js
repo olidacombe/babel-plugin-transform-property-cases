@@ -42,6 +42,15 @@ describe("getOptions", () => {
     expect(options).to.not.have.property("margin");
     expect(options).to.have.property("marginTop", "margin-top");
   });
+
+  it("combines allCss with specific overrides", () => {
+    const options = getOptions({
+      allCss: { source: "camelCase", target: "identity" },
+      snake_case: ["marginLeft"],
+    });
+    expect(options).to.have.property("marginTop", "margin-top");
+    expect(options).to.have.property("marginLeft", "margin_left");
+  });
 });
 
 function replace(input, options = {}) {
