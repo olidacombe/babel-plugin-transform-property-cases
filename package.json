@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-property-cases",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Rename JavaScript properties by various case schemes",
   "main": "index.js",
   "repository": "https://github.com/olidacombe/babel-plugin-transform-property-cases",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "test": "mocha",
-    "prettier": "prettier --write **/*.js"
+    "prettier": "prettier --write {**/,}*.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "babel-plugin-transform-rename-properties": "^0.1.0",
-    "change-case": "^4.1.1"
+    "change-case": "^4.1.1",
+    "known-css-properties": "^0.20.0"
   }
 }
