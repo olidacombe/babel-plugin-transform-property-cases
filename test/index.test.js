@@ -34,6 +34,14 @@ describe("getOptions", () => {
       "basel-Craft": "basel_craft",
     });
   });
+
+  it("omits identity transforms via options like allCss", () => {
+    const options = getOptions({
+      allCss: { source: "camelCase", target: "identity" },
+    });
+    expect(options).to.not.have.property("margin");
+    expect(options).to.have.property("marginTop", "margin-top");
+  });
 });
 
 function replace(input, options = {}) {
@@ -102,6 +110,22 @@ describe("plugin", () => {
         PascalCase: ["munster _vs_ cheese"],
         snake_case: ["basel-Craft"],
       }
+    );
+  });
+
+  it("can be used on all css properties using allCss setting", () => {
+    compare(
+      `
+      const props = {
+        marginTop: '1px'
+      };
+      `,
+      `
+      const props = {
+        'margin-top': '1px'
+      };
+      `,
+      { allCss: { source: "camelCase", target: "identity" } }
     );
   });
 });
