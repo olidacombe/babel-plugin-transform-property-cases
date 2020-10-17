@@ -37,7 +37,7 @@ describe("getOptions", () => {
 
   it("omits identity transforms via options like allCss", () => {
     const options = getOptions({
-      allCss: { source: "camelCase", target: "identity" },
+      allCss: { source: "camelCase" },
     });
     expect(options).to.not.have.property("margin");
     expect(options).to.have.property("marginTop", "margin-top");
@@ -45,7 +45,7 @@ describe("getOptions", () => {
 
   it("combines allCss with specific overrides", () => {
     const options = getOptions({
-      allCss: { source: "camelCase", target: "identity" },
+      allCss: { source: "camelCase" },
       snake_case: ["marginLeft"],
     });
     expect(options).to.have.property("marginTop", "margin-top");
@@ -134,7 +134,7 @@ describe("plugin", () => {
         'margin-top': '1px'
       };
       `,
-      { allCss: { source: "camelCase", target: "identity" } }
+      { allCss: { source: "camelCase" } }
     );
   });
 });
