@@ -35,6 +35,21 @@ describe("getOptions", () => {
     });
   });
 
+  it("transforms allCss via source, target, or both specifications", () => {
+    let options = getOptions({
+      allCss: { source: "camelCase" },
+    });
+    expect(options).to.have.property("marginTop", "margin-top");
+    options = getOptions({
+      allCss: { target: "camelCase" },
+    });
+    expect(options).to.have.property("margin-top", "marginTop");
+    options = getOptions({
+      allCss: { source: "PascalCase", target: "camelCase" },
+    });
+    expect(options).to.have.property("MarginTop", "marginTop");
+  });
+
   it("omits identity transforms via options like allCss", () => {
     const options = getOptions({
       allCss: { source: "camelCase" },
