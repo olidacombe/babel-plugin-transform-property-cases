@@ -20,6 +20,32 @@ PascalCase
 snake_case
 ```
 
+E.g.
+
+```json
+{
+  "camelCase": ["ultra calm", "semi_calm"]
+}
+```
+
+would convert:
+
+```js
+const o = {
+  "ultra calm": "lake",
+  semi_calm: "horse",
+};
+```
+
+into:
+
+```js
+const o = {
+  ultraCalm: "lake",
+  semiCalm: "horse",
+};
+```
+
 ## Property Collections
 
 Also available are property collections for which you can speficy global case-change behaviour. Currently only `allCss` is supported, converting any standard css property name according to the specified `source` and/or `target` subkeys.
@@ -34,7 +60,7 @@ E.g.
 }
 ```
 
-Would convert `margin_top` to `margin-top`.
+Would convert any `margin_top` poperty to `margin-top`.
 
 ```json
 {
