@@ -26,20 +26,20 @@ Also available are property collections for which you can speficy global case-ch
 
 E.g.
 
-```js
+```json
 {
-  allCss: {
-    source: "snake_kase";
+  "allCss": {
+    "source": "snake_case"
   }
 }
 ```
 
 Would convert `margin_top` to `margin-top`.
 
-```js
+```json
 {
-  allCss: {
-    target: "PascalCase";
+  "allCss": {
+    "target": "PascalCase"
   }
 }
 ```
@@ -48,10 +48,11 @@ Would convert `margin-top` to `MarginTop`.
 
 And
 
-```js
+```json
 {
-  allCss: {
-    target: 'camelCase', source: 'PascalCase'
+  "allCss": {
+    "target": "camelCase",
+    "source": "PascalCase"
   }
 }
 ```

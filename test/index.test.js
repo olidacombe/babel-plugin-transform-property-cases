@@ -86,14 +86,15 @@ function compare(input, output, options = {}) {
 
 // functional test to check we've hooked things up properly
 describe("plugin", () => {
-  it("transforms", () => {
+  it("transforms as claimed in the readme", () => {
     compare(
       `
       const yaDa = 3;
 
       const thing = {
         blaBla: 7,
-        yaDa
+        yaDa,
+        paddingBottom: "1em"
       };
 
       function mutateStuff(stuff) {
@@ -102,33 +103,37 @@ describe("plugin", () => {
 
       const meal = {
         TotalSoup: {
-          'munster _vs_ cheese': {
-            'basel-Craft': 'yaDa'
-          }
-        }
+          "munster _vs_ cheese": {
+            "basel-Craft": "yaDa"
+          },
+        },
       };
       `,
       `
       const yaDa = 3;
 
       const thing = {
-        'bla-bla': 7,
-        'ya-da': yaDa
+        "bla-bla": 7,
+        "ya-da": yaDa,
+        "padding-bottom": "1em"
       };
 
       function mutateStuff(stuff) {
-        stuff['bla-bla'] += 2;
+        stuff["bla-bla"] += 2;
       }
 
       const meal = {
         totalSoup: {
-          'MunsterVsCheese': {
-            'basel_craft': 'yaDa'
-          }
-        }
+          "MunsterVsCheese": {
+            "basel_craft": "yaDa"
+          },
+        },
       };
       `,
       {
+        allCss: {
+          source: "camelCase",
+        },
         "kebab-case": ["blaBla", "yaDa"],
         camelCase: ["TotalSoup"],
         PascalCase: ["munster _vs_ cheese"],
