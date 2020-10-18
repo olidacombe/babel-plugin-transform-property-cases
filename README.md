@@ -2,13 +2,13 @@
 
 Babel plugin to transform properties into different cases.
 
-## Installation
+# Installation
 
 ```
 $ yarn add -D babel-plugin-transform-property-cases
 ```
 
-## Usage
+# Usage
 
 Specify which object property names should be converted to different cases by providing arrays under the following keys in the plugin config:
 
@@ -20,7 +20,45 @@ PascalCase
 snake_case
 ```
 
-## Example
+## Property Collections
+
+Also available are property collections for which you can speficy global case-change behaviour. Currently only `allCss` is supported, converting any standard css property name according to the specified `source` and/or `target` subkeys.
+
+E.g.
+
+```js
+{
+  allCss: {
+    source: "snake_kase";
+  }
+}
+```
+
+Would convert `margin_top` to `margin-top`.
+
+```js
+{
+  allCss: {
+    target: "PascalCase";
+  }
+}
+```
+
+Would convert `margin-top` to `MarginTop`.
+
+And
+
+```js
+{
+  allCss: {
+    target: 'camelCase', source: 'PascalCase'
+  }
+}
+```
+
+Would convert `MarginTop` to `marginTop`.
+
+# Example
 
 Input file:
 
@@ -30,6 +68,7 @@ const yaDa = 3;
 const thing = {
   blaBla: 7,
   yaDa,
+  paddingBottom: "1em",
 };
 
 function mutateStuff(stuff) {
@@ -53,6 +92,9 @@ const meal = {
     [
       "babel-plugin-transform-property-cases",
       {
+        "allCss": {
+          "source": "camelCase"
+        },
         "kebab-case": ["blaBla", "yaDa"],
         "camelCase": ["TotalSoup"],
         "PascalCase": ["munster _vs_ cheese"],
@@ -71,6 +113,7 @@ const yaDa = 3;
 const thing = {
   "bla-bla": 7,
   "ya-da": yaDa,
+  "padding-bottom": "1em",
 };
 
 function mutateStuff(stuff) {
@@ -86,11 +129,11 @@ const meal = {
 };
 ```
 
-## License
+# License
 
 This plugin is licensed under the MIT license. See [LICENSE](./LICENSE).
 
-## Thanks
+# Thanks
 
 This plugin relies heavily on:
 

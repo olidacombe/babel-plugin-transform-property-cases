@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-property-cases",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Rename JavaScript properties by various case schemes",
   "main": "index.js",
   "repository": "https://github.com/olidacombe/babel-plugin-transform-property-cases",
